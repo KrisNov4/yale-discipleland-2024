@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticker Leaderboard - Yale Disciple Land 2024</title>
+    <style>
+        body {
+            font-family: cursive;
+            background-color: #95f3ff; /* Updated background color */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
+        .leaderboard {
+            width: 60%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px; /* Slightly reduced padding */
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px; /* Slightly reduced gap */
+        }
+
+        .leaderboard h1 {
+            text-align: center;
+            margin-bottom: 15px; /* Slightly reduced margin */
+            font-size: 28px; /* Slightly reduced font size */
+            grid-column: span 2;
+            background-color: #95f3ff; /* Updated background color */
+            color: black; /* Font color of the title */
+            padding: 8px; /* Slightly reduced padding */
+            border-radius: 5px;
+            text-decoration: underline; /* Underline the title */
+        }
+
+        .grade {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px; /* Slightly reduced padding */
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .grade h2 {
+            margin: 0;
+            text-align: center;
+            width: 100%;
+            font-size: 1.7em; /* Increased font size by 5 pixels */
+        }
+
+        .grade p {
+            margin: 0;
+            font-size: 1.9em; /* Slightly reduced font size */
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 8px; /* Slightly reduced padding */
+            min-width: 160px; /* Minimum width to accommodate content */
+            background-color: #fff;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .grade label input[type="checkbox"] {
+            width: 22px; /* Slightly reduced size */
+            height: 22px; /* Slightly reduced size */
+            margin-top: 8px; /* Slightly reduced margin */
+        }
+
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px; /* Slightly reduced padding */
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .input-area h2 {
+            margin-bottom: 8px; /* Slightly reduced margin */
+            font-size: 1.2em; /* Slightly reduced font size */
+        }
+
+        .input-area input {
+            padding: 8px; /* Slightly reduced padding */
+            font-size: 0.9em; /* Slightly reduced font size */
+            width: 90px; /* Slightly reduced width */
+            margin-bottom: 8px; /* Slightly reduced margin */
+        }
+
+        .input-area button {
+            padding: 8px 18px; /* Slightly reduced padding */
+            font-size: 0.9em; /* Slightly reduced font size */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin: 5px; /* Small margin between buttons */
+        }
+
+        .input-area button:first-of-type {
+            background-color: #28a745; /* Green for the plus button */
+        }
+
+        .input-area button:last-of-type {
+            background-color: #dc3545; /* Red for the minus button */
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard">
+        <h1>Sticker Leaderboard - Yale Disciple Land 2024</h1>
+        <div class="grade" id="prek">
+            <h2>Pre-K/Kindergarten</h2>
+            <p>Stickers: <span class="sticker-count" id="stickersPreK">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="PreK">
+            </label>
+        </div>
+        <div class="grade" id="grade1">
+            <h2>1st Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers1">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="1">
+            </label>
+        </div>
+        <div class="grade" id="grade2">
+            <h2>2nd Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers2">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="2">
+            </label>
+        </div>
+        <div class="grade" id="grade3">
+            <h2>3rd Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers3">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="3">
+            </label>
+        </div>
+        <div class="grade" id="grade4">
+            <h2>4th Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers4">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="4">
+            </label>
+        </div>
+        <div class="grade" id="grade5">
+            <h2>5th Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers5">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="5">
+            </label>
+        </div>
+        <div class="grade" id="grade6">
+            <h2>6th Grade</h2>
+            <p>Stickers: <span class="sticker-count" id="stickers6">0</span></p>
+            <label>
+                <input type="checkbox" class="sticker-checkbox" data-grade="6">
+            </label>
+        </div>
+        <div class="input-area">
+            <h2>Manage Stickers</h2>
+            <input type="number" id="stickerInput" placeholder="Enter number of stickers">
+            <div>
+                <button id="addStickersButton">+</button>
+                <button id="subtractStickersButton">-</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
